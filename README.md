@@ -1,5 +1,12 @@
 # Interview_Prepration
 For interview prepration in 3 month.
+**GIT COMMANDS
+ git init
+ git add README.md
+ git commit -m "first commit"
+ git branch -M main
+ git remote add origin git@github.com:sumitbounthiyal/sumitbounthiyal.git
+ git push -u origin main
 
 # 🚀 90-Day Embedded/Linux Interview Preparation Plan
 
