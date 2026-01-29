@@ -1,0 +1,137 @@
+Complication stages
+
+
+There are 4 stages of complication 
+ --------------                  ------------                   -----------                  --------
+| PREPROCESSOR |   -------->    | TRANSLATOR |    -------->    | ASSEMBLER |    -------->   | LINKER |  --------> a.out
+ --------------     .i file     ------------       .s file       -----------     .o file     --------     a.out
+
+PREPROCEESSOR
+	--> It include all header file and make a single file.
+ 	--> It removes comments and replace the micros and condictional complication.
+
+TRANSLATOR
+	--> It is responsible for syntax error and convert program into assembly code program.
+
+ASSEMBLIER
+	--> It will generate a object file and convet the assembly code to machine understandiable code.
+
+LINKER
+	--> Its responsible for linking with librarys and operating system information.
+	--> It generate executable file.
+
+
+MEMORY LAYOUT
+
+
+         ___________________
+	|	            |
+	|	            | COMMAND LINE ARGUMENTS AND ENVIRONMENT VARIABLES 
+	|	            |
+	|___________________|
+	|	            |
+	|	Stack       |	LOCAL VARIABLES
+	|	            |
+	|-------------------|
+	|	  |         |
+	|	  v         |
+	|	            |
+	|	            |
+	|	  ^         |
+	|	  |         |
+	|-------------------|
+	|	            |
+	|	Heap        |  DYNAMIC VARIABLES
+	|	            |
+	|___________________|
+	|  ---------------  |
+	| | 	          | |
+	| | 	          | |
+	| | 	BSS	  | |  UNINITILIZED VARIABLES
+	| |	          | |
+	| |               | |
+	| |---------------| |
+	| |	          | |
+	| |	          | |
+	| |	DATA 	  | |  INITILIZED VARIABLES
+	| |               | |
+	|  ---------------  |
+	|___________________|
+	|	            |
+	|	            |
+	|	CODE        |  READ FROM PROGRAM FILE.
+	|	            |
+	|	            |
+	 ___________________
+
+1. CODE SEGMENT
+	The text segment (or code segment) stores the executable code of the program like program’s functions and instructions.
+	The segment is usually read-only to prevent accidental modification during execution.
+	It is typically stored in the lower part of memory.
+	The size of the text segment depends on the number of instructions and the program’s complexity.
+2. DATA SEGMENT
+	The data segment stores global and static variables of the program.
+	Variables in this segment retain their values throughout program execution.
+	The size of the data segment depends on the number and type of global/static variables.
+	It is divided into initialized and uninitialized (BSS) sections.
+	
+	A. Initialized Data Segment
+		As the name suggests, it is the part of the data segment that contains global and static variables that
+		 have been initialized by the programmer.
+		eg:
+			int globalVar = 10;
+			char message[] = "Hello";
+
+	B. Uninitialized Data Segment (BSS)
+		The uninitialized data segment is often called the BSS segment.
+		It stores global and static variables that are not initialized by the programmer.
+		These variables are automatically initialized to zero by the system at runtime.
+
+		eg:
+			int globalVar;
+			char message[50];
+
+3. Heap Segment
+	The heap segment is used for dynamic memory allocation.
+	It starts at the end of the BSS segment and grows towards higher memory addresses.
+	Memory in the heap is managed using functions like malloc(), realloc(), and free().
+	The heap is shared by all shared libraries and dynamically loaded modules in a process.
+        eg:
+		int *ptr = (int*) malloc(sizeof(int) * 5; 
+		char *ptr = (char*)calloc(sizeof(int),10);
+
+4. Stack Segment
+	The stack stores local variables, function parameters, and return addresses for each function call.
+	Each function call creates a stack frame in this segment.
+	The stack is usually at higher memory addresses and grows opposite to the heap.
+	When the stack and heap meet, the program’s free memory is exhausted.
+	eg:
+		int hello(int a,int b)
+		{
+			int a=10;	
+		}
+
+
+
+
+COMPLIER 
+
+Complier is used to convert human readible code to machine readible code.
+
+		  COMPLIER
+		     |
+		     |
+	    ___________________
+ 	   |                   |
+ 	   |                   |
+ 	   |                   |
+     NATIVE COMPLIER      CROSS COMPLIER
+
+	
+	I.  NATIVE COMPLIER
+		Those compliers which work and generate code for the same environment.
+
+	II. CROSS COMPLIER
+		Those compliers works one one environment and generate code for the another environment.
+
+
